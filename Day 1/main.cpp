@@ -3,13 +3,28 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]){
-    ifstream myFile(argv[1]);
-    int total = 0;
-    int TopElf1, TopElf2, TopElf3, bigTotal, temp = 0;
-    string line;
+int total = 0;
+int TopElf1, TopElf2, TopElf3, bigTotal, biggestTotal, temp = 0;
+string line;
 
-    while(getline(myFile, line))
+void Part1(ifstream& file){
+    while(getline(file, line))
+    {
+        if(line == "")
+        {
+            if(total > biggestTotal)
+                biggestTotal = total;
+            total = 0;
+        }
+        else
+            total += stoi(line);
+    }
+
+    cout<<"Part1: "<<biggestTotal<<endl;
+}
+
+void Part2(ifstream& file){
+    while(getline(file, line))
     {
         if(line == "")
         {
@@ -35,8 +50,15 @@ int main(int argc, char *argv[]){
             total += stoi(line);
     }
 
-    cout<<"The Top 3 Elves were: "<<TopElf3<< " "<<TopElf2<<" "<<TopElf1<<endl;
     bigTotal = TopElf3+TopElf2+TopElf1;
-    cout<<"All 3 elves added together: "<<bigTotal<<endl;
+    cout<<"Part2: "<<bigTotal<<endl;
+}
+
+int main(int argc, char *argv[]){
+    ifstream myFilePart1, myFilePart2;
+    myFilePart1.open(argv[1]);
+    Part1(myFilePart1);
+    myFilePart2.open(argv[1]);
+    Part2(myFilePart2);
     return 0;
 }
