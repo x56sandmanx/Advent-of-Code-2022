@@ -6,11 +6,15 @@ using namespace std;
 string line;
 
 void Part1(ifstream& file){
-    
+    while(getline(file, line)){
+        
+    }
 }
 
 void Part2(ifstream& file){
-    
+    while(getline(file, line)){
+        
+    }
 }
 
 int main(int argc, char *argv[]){
